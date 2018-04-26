@@ -3,7 +3,7 @@
 // @description    Removes the timer from Memrise Garden.
 // @match          http://*.memrise.com/*
 // @match          https://*.memrise.com/*
-// @version        0.2
+// @version        0.3
 // @grant          none
 // @updateURL      https://github.com/arvvn/memrise-no-timer/raw/master/memrise-no-timer.user.js
 // ==/UserScript==
@@ -22,6 +22,5 @@ function NoTimer() {
 }
 
 MEMRISE.garden._events.start.push(() => {
-    NoScoreWhileInputting();
     NoTimer();
 });

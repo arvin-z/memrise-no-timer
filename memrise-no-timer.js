@@ -3,7 +3,7 @@
 // @description    Removes the timer from Memrise Garden.
 // @match          http://*.memrise.com/*
 // @match          https://*.memrise.com/*
-// @version        0.1
+// @version        0.2
 // @grant          none
 // @updateURL      https://github.com/arvvn/memrise-no-timer/raw/master/memrise-no-timer.user.js
 // ==/UserScript==
@@ -21,10 +21,7 @@ function NoTimer() {
     }());
 }
 
-MEMRISE.garden.session_start = (function() {
-    var cached_function = MEMRISE.garden.session_start;
-    return function() {
-        NoTimer();
-        return cached_function.apply(this, arguments);
-    };
-}());
+MEMRISE.garden._events.start.push(() => {
+    NoScoreWhileInputting();
+    NoTimer();
+});
